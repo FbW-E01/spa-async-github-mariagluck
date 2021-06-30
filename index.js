@@ -1,7 +1,3 @@
-const userName = document.querySelector("#formInput");
-const form = document.querySelector("#githubForm");
-const repoGH = document.querySelector("#repositories");
-
 const githubForm = document.querySelector(".githubForm");
 
 
@@ -51,6 +47,7 @@ function listGithubUserRepos(username){
 //////////////////////////////////
 //THIS IS ANOTHER WAY WITH FECTH
 
+const formInput = document.querySelector("#formInput");
 
 githubForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -65,7 +62,7 @@ githubForm.addEventListener("submit", (e) => {
       return response.json();
     })
     .then((results) => {
-      repoOnPage(results);
+      listGithubUserRepos(results);
     })
     .catch((e) => {
       alert("Github USERNAME not found!");
@@ -74,14 +71,14 @@ githubForm.addEventListener("submit", (e) => {
 
 function listGithubUserRepos(data) {
   for (let i = 0; i < data.length; i++) {
-      
+
     let ul = document.querySelector(".userRepos");
     let li = document.createElement("li");
-    li.innerHTML = ` <p><strong>Repo: </strong> ${data[i].name}</p>
-                    <p><strong>Description: </strong> ${data[i].description}</p>
-                    <p><strong>URL: </strong> <a href="${data[i].html_url}">${repository[i].html_url}</a></p>
-                    <p>Created: ${data[i].created_at}</p>
-                    `
+    li.innerHTML = (` <p><strong>Repo: </strong> ${data[i].name}</p>
+                     <p><strong>Description: </strong> ${data[i].description}</p>
+                     <p><strong>URL: </strong> <a href="${data[i].html_url}">${repository[i].html_url}</a></p>
+                     <p>Created: ${data[i].created_at}</p>
+                    `);
 
     ul.appendChild(li);
   }

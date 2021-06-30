@@ -1,5 +1,6 @@
 const githubForm = document.querySelector(".githubForm");
 
+/// THIS A WAY WITH XMLHttpRequest
 
 githubForm.addEventListener('submit', (e) => {
 
